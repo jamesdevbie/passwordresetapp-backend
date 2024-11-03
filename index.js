@@ -1,27 +1,26 @@
-import express from "express";
-import cors from "cors";
-import dotenv from "dotenv";
-import connectDb from "./Database/dbConfig.js";
-import authRoute from "./Routers/authRouter.js"
+import express from 'express'
+import cors from 'cors'
+import dotenv from 'dotenv'
+import connectDb from './Database/dbConfig.js'
+import authRoute from './Routers/authRouter.js'
 
-dotenv.config();
+dotenv.config()
 
-const app = express();
+const app = express()
 
-app.use(cors());
-app.use(express.json());
+app.use(cors())
+app.use(express.json())
 
-connectDb();
+connectDb()
 
-app.get("/",(req,res)=>{
-  res.status(200).send("Welcome to our api")
+app.get('/', (req, res) => {
+  res.status(200).send('Welcome to Password Reset API')
 })
 
-app.use("/api/auth",authRoute)
+app.use('/api/auth', authRoute)
 
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 4000
 
-app.listen(port,()=>{
-    console.log("server started");
-    
+app.listen(port, () => {
+  console.log('server started')
 })
