@@ -93,7 +93,7 @@ export const forgotPassword = async (req, res) => {
       subject: 'Password Reset Link',
       text: `You are receiving this because you have requested the reset of the password for your account 
       Please click the following link or paste it into your browser to complete the process
-      http://localhost:5173/reset-password/${randomstring}`,
+      https://passwordresetapp-frontend.vercel.app/reset-password/${randomstring}`,
     }
     transporter.sendMail(mailOptions, function (error, info) {
       if (error) {
@@ -122,7 +122,6 @@ export const resetPassword = async (req, res) => {
 
     console.log(user._id)
     const hashPassword = await bcrypt.hash(password, 10)
-    console.log(hashPassword)
     await User.findByIdAndUpdate(
       { _id: user._id },
       { password: hashPassword, randomchar: '' }
